@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Генератор паролей</title>
+    <script type="module" src="index.js"></script>
 </head>
 <body>
-<input id='numbers' type="checkbox"/>
-<label for='numbers'>Использовать цифры</label>
-<br>
-<input id='lowerCase' type="checkbox"/>
-<label for='lowerCase'>Использовать буквы в нижнем регистре</label>
-<br>
-<input id='upperCase' type="checkbox"/>
-<label for='upperCase'>Использовать буквы в верхнем регистре</label>
-<br>
-<input id='symbols' type="checkbox"/>
-<label for='symbols'>Использовать символы</label>
-<br>
-<label for='length'>Длина пароля: </label>
-<input id='length' type="number"/>
-<br>
-<input></input> <button type="button">Сгенерировать</button>
+<form>
+    <input id='numbers' type="checkbox"/>
+    <label for='numbers'>Использовать цифры</label>
+    <br>
+    <input id='lowerCase' type="checkbox"/>
+    <label for='lowerCase'>Использовать буквы в нижнем регистре</label>
+    <br>
+    <input id='upperCase' type="checkbox"/>
+    <label for='upperCase'>Использовать буквы в верхнем регистре</label>
+    <br>
+    <input id='symbols' type="checkbox"/>
+    <label for='symbols'>Использовать символы</label>
+    <br>
+    <label for='passwordLength'>Длина пароля: </label>
+    <input id='passwordLength' type="number"/>
+    <br>
+    <input id='password' readonly/>
+    <button id='generate' type='button'>Сгенерировать</button>
+</form>
 </body>
 </html>

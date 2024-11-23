@@ -1,3 +1,11 @@
+generate.addEventListener('click', handleClick);
+
+function handleClick() {
+    let form = document.forms[0];
+    let {numbers, lowerCase, upperCase, symbols, passwordLength} = form.elements;
+    document.getElementById('password').value = generatePassword(passwordLength.value, numbers.checked, lowerCase.checked, upperCase.checked, symbols.checked);
+}
+
 const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const lowerCase = [
     'a', 'b', 'c', 'd', 'e', 'f',
@@ -16,7 +24,7 @@ const upperCase = [
 const symbols = ['$', '^', '&', '?', '*', '%', '#', '@', '!', '(', ')', '_', '-', '+'];
 const characterGroups = [numbers, lowerCase, upperCase, symbols];
 
-function generatePassword(length, includeNumbers = false, includeLowercase = false, includeUppercase = false, includeSymbols = false) {
+export function generatePassword(length, includeNumbers = false, includeLowercase = false, includeUppercase = false, includeSymbols = false) {
     if (length < 1) {
         throw new TypeError(`Password length must be greater than 0, got ${length}`);
     }
