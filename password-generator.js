@@ -1,14 +1,14 @@
 const numbers = '0123456789';
 const lowerCase = 'abcdefghijklmnopqrstuvwxyz';
 const upperCase = lowerCase.toUpperCase();
-const symbols = '$^&?*%#@!()_-+';
-const characterGroups = [numbers, lowerCase, upperCase, symbols];
+const specialCharacters = `!"#$%&\\'()*+,-./:;<=>?@[]^_\`{|}~`;
+const characterGroups = [numbers, lowerCase, upperCase, specialCharacters];
 
-export function generatePassword(length, includeNumbers = false, includeLowercase = false, includeUppercase = false, includeSymbols = false) {
+export function generatePassword(length, includeNumbers = false, includeLowercase = false, includeUppercase = false, includeSpecialCharacters = false) {
     if (length < 1) {
         throw new TypeError(`Password length must be greater than 0, got ${length}`);
     }
-    let flags = [includeNumbers, includeLowercase, includeUppercase, includeSymbols];
+    let flags = [includeNumbers, includeLowercase, includeUppercase, includeSpecialCharacters];
     let usedCharacterGroups = [];
     for (let i = 0; i < flags.length; ++i) {
         if (flags[i]) {

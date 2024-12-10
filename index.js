@@ -28,8 +28,8 @@ function copyPasswordToClipboard() {
 function generatePasswordAndPasteIt(evt) {
     evt.preventDefault();
     let form = document.forms['password-generator'];
-    let {useNumbers, useLowerCase, useUpperCase, useSymbols, passwordLength} = form.elements;
-    document.getElementById('password').value = generatePassword(passwordLength.value, useNumbers.checked, useLowerCase.checked, useUpperCase.checked, useSymbols.checked);
+    let {useNumbers, useLowerCase, useUpperCase, useSpecialCharacters, passwordLength} = form.elements;
+    document.getElementById('password').value = generatePassword(passwordLength.value, useNumbers.checked, useLowerCase.checked, useUpperCase.checked, useSpecialCharacters.checked);
 }
 
 document.getElementById('password').addEventListener('input', analysePassword);
