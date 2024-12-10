@@ -3,6 +3,22 @@ import {generatePassword} from './password-generator.js';
 document.getElementById('password-generator').addEventListener('submit', generatePasswordAndPasteIt);
 document.getElementById('password-generator').addEventListener('submit', analysePassword);
 document.getElementById('copy').addEventListener('click', copyPasswordToClipboard);
+makeAtLeastOneCheckboxRequired();
+
+function makeAtLeastOneCheckboxRequired() {
+    let checkboxes = document.querySelectorAll('.characters');
+
+    for (let checkbox of checkboxes) {
+        checkbox.addEventListener('change', () => {
+            console.log([].filter.call(checkboxes, c => c.checked).length);
+            if ([].filter.call(checkboxes, c => c.checked).length === 0) {
+                checkboxes.forEach(c => c.setAttribute('required', 'required'));
+            } else {
+                checkboxes.forEach(c => c.removeAttribute('required'));
+            }
+        })
+    }
+}
 
 function copyPasswordToClipboard() {
     let password = document.getElementById('password').value;
