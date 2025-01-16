@@ -9,23 +9,23 @@ export function generatePassword(length, includeNumbers = false, includeLowercas
         throw new TypeError(`Password length must be greater than 0, got ${length}`);
     }
     let flags = [includeNumbers, includeLowercase, includeUppercase, includeSpecialCharacters];
-    let usedCharacterGroups = [];
+    let includedCharacterGroups = [];
     for (let i = 0; i < flags.length; ++i) {
         if (flags[i]) {
-            usedCharacterGroups.push(characterGroups[i]);
+            includedCharacterGroups.push(characterGroups[i]);
         }
     }
-    if (usedCharacterGroups.length === 0) {
+    if (includedCharacterGroups.length === 0) {
         throw new TypeError(`You must specify at least 1 character group`);
     }
-    usedCharacterGroups = shuffle(usedCharacterGroups);
+    includedCharacterGroups = shuffle(includedCharacterGroups);
 
     let passwordCharacters = new Array(length);
     let characterGroupIndex = 0;
     for (let i = 0; i < length; ++i) {
-        let characterGroup = usedCharacterGroups[characterGroupIndex];
+        let characterGroup = includedCharacterGroups[characterGroupIndex];
         passwordCharacters[i] = characterGroup[getRandomIntegerInRange(0, characterGroup.length - 1)];
-        characterGroupIndex = (characterGroupIndex + 1) % usedCharacterGroups.length;
+        characterGroupIndex = (characterGroupIndex + 1) % includedCharacterGroups.length;
     }
 
     return shuffle(passwordCharacters).join('');

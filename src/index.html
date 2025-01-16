@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Генератор паролей</title>
+    <link rel='stylesheet' href='index.css'>
+</head>
+<body>
+<h1>Генератор паролей</h1>
+<form name='password-form' id='password-form'>
+    <input class='characters' id='include-numbers' checked type='checkbox'/>
+    <label for='include-numbers'>Использовать цифры</label>
+    <br>
+    <input class='characters' id='include-lower-case' checked type='checkbox'/>
+    <label for='include-lower-case'>Использовать буквы в нижнем регистре</label>
+    <br>
+    <input class='characters' id='include-upper-case' checked type='checkbox'/>
+    <label for='include-upper-case'>Использовать буквы в верхнем регистре</label>
+    <br>
+    <input class='characters' id='include-special-characters' checked type='checkbox'/>
+    <label for='include-special-characters'>Использовать символы</label>
+    <br>
+    <label for='password-length'>Длина пароля: </label>
+    <input id='password-length' value='15' min='1' type='number'/>
+    <input id='password-length-range' type='range' min='5' max='40'>
+    <br>
+    <input id='password'/>
+    <button id='generate'>Сгенерировать</button>
+    <button id='copy' type='button'>Скопировать</button>
+    <br>
+    <div id='password-strength'></div>
+    <div id='warning'></div>
+</form>
+<script type='module' src='./index.js'></script>
+<script type='text/javascript' src='./zxcvbn.js'></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+body {
+    margin-left: 25px;
+    font-family: sans-serif;
+}
+
+#generate {
+    margin-top: 10px;
+}
+
+input[type='checkbox'] {
+    margin-bottom: 6px;
+}
+
+#password {
+    margin-bottom: 6px;
+    width: 300px;
+}
+
+#password-length {
+    width: 40px;
+}
