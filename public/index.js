@@ -49,7 +49,8 @@ async function analysePassword() {
     let warning = '', passwordStrength = '';
     if (password) {
         document.getElementById('password-strength').textContent = 'Надёжность пароля: …';
-        let passwordAnalysis = await new Promise(res => setTimeout(() => res(zxcvbn(password))));
+        await new Promise(res => setTimeout(() => res()));
+        let passwordAnalysis = zxcvbn(password);
         if (passwordAnalysis.feedback.warning) {
             warning = `Предупреждение: ${passwordAnalysis.feedback.warning}`;
         }
