@@ -1,5 +1,4 @@
 import {generatePassword} from './password-generator.js';
-import {zxcvbn} from './zxcvbn';
 
 let passwordForm = document.getElementById('password-form');
 passwordForm.addEventListener('submit', makeAtLeastOneCheckboxRequired);
@@ -49,7 +48,7 @@ async function analysePassword() {
 
     let warning = '', passwordStrength = '';
     if (password) {
-        if (password.length >= 100) {
+        if (password.length >= 50) {
             passwordStrength = `Надёжность пароля: 5/5`;
         } else {
             document.getElementById('password-strength').textContent = 'Надёжность пароля: …';
