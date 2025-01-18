@@ -1,4 +1,5 @@
 import {generatePassword} from './password-generator.js';
+import {zxcvbn} from './zxcvbn';
 
 let passwordForm = document.getElementById('password-form');
 passwordForm.addEventListener('submit', makeAtLeastOneCheckboxRequired);
@@ -48,13 +49,17 @@ async function analysePassword() {
 
     let warning = '', passwordStrength = '';
     if (password) {
-        document.getElementById('password-strength').textContent = 'Надёжность пароля: …';
-        await new Promise(res => setTimeout(() => res()));
-        let passwordAnalysis = zxcvbn(password);
-        if (passwordAnalysis.feedback.warning) {
-            warning = `Предупреждение: ${passwordAnalysis.feedback.warning}`;
+        if (password.length >= 100) {
+            passwordStrength = `Надёжность пароля: 5/5`;
+        } else {
+            document.getElementById('password-strength').textContent = 'Надёжность пароля: …';
+            await new Promise(res => setTimeout(() => res()));
+            let passwordAnalysis = zxcvbn(password);
+            if (passwordAnalysis.feedback.warning) {
+                warning = `Предупреждение: ${passwordAnalysis.feedback.warning}`;
+            }
+            passwordStrength = `Надёжность пароля: ${passwordAnalysis.score + 1}/5`;
         }
-        passwordStrength = `Надёжность пароля: ${passwordAnalysis.score + 1}/5`;
     }
 
     document.getElementById('password-strength').textContent = passwordStrength;
